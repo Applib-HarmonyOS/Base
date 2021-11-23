@@ -4,29 +4,29 @@ package io.kimo.base;
 public interface Base {
 
     /**
-     * Main contract between the Android classes
+     * Main contract between the harmony classes
      */
-    interface AndroidView<P extends Presenter>{
-        /* return your view's layout resource */
+    interface HarmonyComponent<P extends Presenter>{
+        /* return your component's layout resource */
         int getLayoutResource();
 
-        /* call all your mapping methods in here (e.g findViewById) */
-        void mapUI(android.view.View view);
+        /* call all your mapping methods in here (e.g findComponentById) */
+        void mapUI(ohos.agp.components.Component component);
 
-        /* configure everything related with your mapped views (adapters, click listeners, etc) */
+        /* configure everything related with your mapped components (adapters, click listeners, etc) */
         void configureUI();
 
         /* build up your presenter with all its necessary dependencies in here */
         P injectDependencies();
     }
 
-    interface View <P extends Presenter> extends AndroidView<P>{
-        /* getter to the view's presenter */
+    interface Component<P extends Presenter> extends HarmonyComponent<P> {
+        /* getter to the component's presenter */
         P getPresenter();
     }
 
     interface Presenter {
-        void createView();
-        void destroyView();
+        void createComponent();
+        void destroyComponent();
     }
 }

@@ -2,18 +2,18 @@ package io.kimo.base.utils.mvp;
 
 import io.kimo.base.Base;
 
-public abstract class BasePresenter<V extends Base.View> implements Base.Presenter {
+public abstract class BasePresenter<V extends Base.Component> implements Base.Presenter {
 
-    protected V mView;
+    protected V mComponent;
 
-    public BasePresenter(V view) {
-        this.mView = view;
+    public BasePresenter(V component) {
+        this.mComponent = component;
     }
 
     @Override
-    public void createView() {
-        hideAllViews();
+    public void createComponent() {
+        hideAllComponents();
     }
 
-    protected abstract void hideAllViews();
+    protected abstract void hideAllComponents();
 }

@@ -1,13 +1,13 @@
 package io.kimo.base.utils.domain;
 
-import android.os.Handler;
-import android.os.Looper;
+import ohos.eventhandler.EventHandler;
+import ohos.eventhandler.EventRunner;
 
 public abstract class BaseUseCase<T> implements UseCase<T>, Runnable {
 
     public Callback<T> mCallback;
     protected String mErrorReason = "Something wrong happened";
-    protected Handler mMainThread = new Handler(Looper.getMainLooper());
+    protected EventHandler mMainThread = new EventHandler(EventRunner.getMainEventRunner());
 
     public BaseUseCase(Callback<T> mCallback) {
         this.mCallback = mCallback;
@@ -17,7 +17,7 @@ public abstract class BaseUseCase<T> implements UseCase<T>, Runnable {
     public void run() {
         try {
             final T result = perform();
-            mMainThread.post(new Runnable() {
+            mMainThread.postTask(new Runnable() {
                 @Override
                 public void run() {
                     mCallback.onSuccess(result);
@@ -31,7 +31,7 @@ public abstract class BaseUseCase<T> implements UseCase<T>, Runnable {
 
     @Override
     public void onError() {
-        mMainThread.post(new Runnable() {
+        mMainThread.postTask(new Runnable() {
             @Override
             public void run() {
                 mCallback.onError(mErrorReason);

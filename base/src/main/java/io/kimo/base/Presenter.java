@@ -1,20 +1,20 @@
 package io.kimo.base;
 
-public abstract class Presenter<V extends Base.View> implements Base.Presenter {
+public abstract class Presenter<V extends Base.Component> implements Base.Presenter {
 
-    private V mView;
+    private V mComponent;
 
-    public Presenter(V view) {
-        this.mView = view;
-        if(getView() == null) {
-            throw new IllegalArgumentException("View cannot be null");
+    public Presenter(V component) {
+        this.mComponent = component;
+        if(getComponent() == null) {
+            throw new IllegalArgumentException("Component cannot be null");
         }
     }
 
     @Override
-    public void destroyView() {}
+    public void destroyComponent() {}
 
-    public V getView() {
-        return mView;
+    public V getComponent() {
+        return mComponent;
     }
 }
