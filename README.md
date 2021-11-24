@@ -1,3 +1,6 @@
+[![Build](https://github.com/applibgroup/MaterialCalendar/actions/workflows/main.yml/badge.svg)](https://github.com/applibgroup/MaterialCalendar/actions/workflows/main.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=applibgroup_Base&metric=alert_status)](https://sonarcloud.io/dashboard?id=applibgroup_Base)
+
 # Base
 
 Base is a lightweight library that gives you a clean architecture foundation for your Harmony project.
@@ -6,26 +9,31 @@ Base is a lightweight library that gives you a clean architecture foundation for
 
 The main objective of this repository is to show developers how I would architect my Harmony code in future projects.
 
-## Installation tutorial
+# Source
 
-1 . For using Base modules in your sample application, add below dependencies to generate hap/har: Modify entry build.gradle as below :
+This library has been inspired by [thiagokimo](https://github.com/thiagokimo)/**[Base](https://github.com/thiagokimo/Base)**.
 
-```
-      dependencies {
-          implementation fileTree(dir: 'libs', include: ['*.jar','*.har'])
-          implementation project(':base')
-       }
-```
+## Integration
 
-2 . For using Base in separate application, add the below dependencies and include "base.har", in libs folder of "entry" module :
-
-Modify entry build.gradle as below :
+1. For using Base module in sample app, include the source code and add the below dependencies in entry/build.gradle to generate hap/support.har.
 
 ```
-     dependencies {
-         implementation fileTree(dir: 'libs', include: ['*.jar','*.har'])
-     }
+ implementation project(path: ':base')
 ```
+
+2. For using Base module in separate application using har file, add the har file in the entry/libs folder and add the dependencies in entry/build.gradle file.
+
+```
+ implementation fileTree(dir: 'libs', include: ['*.har'])
+```
+
+3. For using Base module from a remote repository in separate application, add the below dependencies in entry/build.gradle file.
+
+```
+implementation 'dev.applibgroup:base:1.0.0'
+```
+
+## 
 
 ## License
 
