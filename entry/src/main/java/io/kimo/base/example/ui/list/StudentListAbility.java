@@ -10,7 +10,9 @@ import ohos.app.Context;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * StudentListAbility
+ */
 public class StudentListAbility extends BaseAbility<StudentListPresenter> implements StudentListContract.Component {
 
     private ListContainer mList;
@@ -56,6 +58,9 @@ public class StudentListAbility extends BaseAbility<StudentListPresenter> implem
         return new StudentListPresenter(this, this);
     }
 
+    /**
+     * StudentListAdapter
+     */
     public class StudentListAdapter extends BaseItemProvider {
 
         private List<Student> mData = new ArrayList<>();

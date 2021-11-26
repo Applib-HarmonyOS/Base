@@ -5,6 +5,9 @@ import io.kimo.base.example.data.Student;
 
 import java.util.List;
 
+/**
+ * StudentListContract
+ */
 public interface StudentListContract {
 
     interface Component extends Base.Component<StudentListPresenter> {

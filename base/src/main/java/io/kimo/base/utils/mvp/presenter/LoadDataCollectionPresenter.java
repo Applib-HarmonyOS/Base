@@ -13,13 +13,38 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 
+/**
+ * LoadDataCollectionPresenter
+ *
+ * @param <E>
+ * @param <M>
+ */
 public class LoadDataCollectionPresenter<E extends Entity, M extends Model> extends BasePresenter<LoadDataCollectionComponent<M>> {
-
+    /**
+     * mExecutor
+     */
     protected Executor mExecutor;
+    /**
+     * mUseCase
+     */
     protected LoadCollectionUseCase<E> mUseCase;
-    protected BaseMapper<E,M> mMapper;
+    /**
+     * mMapper
+     */
+    protected BaseMapper<E, M> mMapper;
+    /**
+     * mLoadedCollection
+     */
     protected List<E> mLoadedCollection = new ArrayList<>();
 
+    /**
+     * LoadDataCollectionPresenter
+     *
+     * @param component LoadDataCollectionComponent
+     * @param mapper    BaseMapper
+     * @param useCase   LoadCollectionUseCase
+     * @param executor  Executor
+     */
     public LoadDataCollectionPresenter(LoadDataCollectionComponent<M> component, BaseMapper<E, M> mapper, LoadCollectionUseCase<E> useCase, Executor executor) {
         super(component);
         this.mMapper = mapper;

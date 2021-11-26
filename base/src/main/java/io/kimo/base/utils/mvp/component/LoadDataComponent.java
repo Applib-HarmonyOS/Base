@@ -18,13 +18,40 @@ package io.kimo.base.utils.mvp.component;
 
 import io.kimo.base.Base;
 
+/**
+ * LoadDataComponent interface
+ */
 public interface LoadDataComponent extends Base.Component {
+
+    /**
+     * showProgress
+     */
     void showProgress();
+
+    /**
+     * showProgress
+     */
     void hideProgress();
 
+    /**
+     * showRetry
+     *
+     * @param retryMsg string
+     */
     void showRetry(String retryMsg);
+
+    /**
+     * hideRetry
+     */
     void hideRetry();
 
+    /**
+     * showComponent
+     */
     void showComponent();
+
+    /**
+     * hideComponent
+     */
     void hideComponent();
 }

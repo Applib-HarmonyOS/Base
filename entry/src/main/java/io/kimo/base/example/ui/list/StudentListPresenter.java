@@ -7,11 +7,20 @@ import ohos.app.Context;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * StudentListPresenter
+ */
 public class StudentListPresenter extends Presenter<StudentListContract.Component> implements StudentListContract.Presenter {
 
     private Context mContext;
     private List<Student> mStudents = new ArrayList<>();
 
+    /**
+     * StudentListPresenter
+     *
+     * @param component Component
+     * @param context Context
+     */
     public StudentListPresenter(StudentListContract.Component component, Context context) {
         super(component);
         mContext = context;
@@ -33,6 +42,11 @@ public class StudentListPresenter extends Presenter<StudentListContract.Componen
         populateListWithData();
     }
 
+    /**
+     * createData
+     *
+     * @return List
+     */
     public static List<Student> createData() {
         List<Student> temp = new ArrayList<>();
 

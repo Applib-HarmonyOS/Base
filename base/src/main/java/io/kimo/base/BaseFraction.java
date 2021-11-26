@@ -22,6 +22,9 @@ import ohos.agp.components.Component;
 import ohos.agp.components.ComponentContainer;
 import ohos.agp.components.LayoutScatter;
 
+/**
+ * BaseFraction.
+ */
 public abstract class BaseFraction<P extends Base.Presenter>
         extends Fraction
         implements Base.Component<P> {
@@ -31,10 +34,9 @@ public abstract class BaseFraction<P extends Base.Presenter>
     @Override
     public Component onComponentAttached(LayoutScatter inflater, ComponentContainer container, Intent savedInstanceState) {
         Component component = inflater.parse(getLayoutResource(), container, false);
-
         mPresenter = injectDependencies();
 
-        if(getPresenter() == null) {
+        if (getPresenter() == null) {
             throw new IllegalArgumentException("You must inject the " +
                     "dependencies before retrieving the presenter");
         } else {

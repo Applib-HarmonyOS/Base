@@ -21,11 +21,31 @@ import io.kimo.base.utils.mvp.Model;
 
 import java.util.List;
 
-
+/**
+ * CollectionComponent
+ *
+ * @param <M>
+ */
 public interface CollectionComponent<M extends Model> extends Base.Component {
+    /**
+     * renderCollection
+     *
+     * @param items list
+     */
     void renderCollection(List<M> items);
+
+    /**
+     * clearCollection
+     */
     void clearCollection();
 
+    /**
+     * showEmpty
+     */
     void showEmpty();
+
+    /**
+     * hideEmpty
+     */
     void hideEmpty();
 }

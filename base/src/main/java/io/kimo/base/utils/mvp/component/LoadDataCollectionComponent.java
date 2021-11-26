@@ -18,6 +18,16 @@ package io.kimo.base.utils.mvp.component;
 
 import io.kimo.base.utils.mvp.Model;
 
+/**
+ * LoadDataCollectionComponent
+ *
+ * @param <M>
+ */
 public interface LoadDataCollectionComponent<M extends Model> extends LoadDataComponent, CollectionComponent<M> {
+    /**
+     * showFeedback
+     *
+     * @param msg String
+     */
     void showFeedback(String msg);
 }

@@ -10,6 +10,9 @@ import ohos.agp.components.Component;
 import ohos.agp.components.Image;
 import ohos.agp.components.Text;
 
+/**
+ * StudentDetailAbility
+ */
 public class StudentDetailAbility extends BaseAbility<StudentDetailPresenter> implements StudentDetailContract.Component {
 
     public static final String TAG = StudentDetailAbility.class.getSimpleName();

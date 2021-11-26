@@ -5,6 +5,9 @@ import io.kimo.base.example.ui.detail.StudentDetailAbility;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 
+/**
+ * Router
+ */
 public class Router {
     public static void studentDetailScreen(AbilitySlice context, Student student) {
         Intent intent = new Intent();

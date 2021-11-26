@@ -22,6 +22,11 @@ import ohos.agp.components.Component;
 
 import java.lang.reflect.Field;
 
+/**
+ * BaseAbility
+ *
+ * @param <P>
+ */
 public abstract class BaseAbility<P extends Base.Presenter>
         extends AbilitySlice
         implements Base.Component<P> {
@@ -69,7 +74,7 @@ public abstract class BaseAbility<P extends Base.Presenter>
             Object curComponentContainerObj = curComponentContainer.get(uiContentObj);
 
             return (Component) curComponentContainerObj;
-        } catch (NoSuchFieldException | IllegalAccessException e) {
+        } catch (NoSuchFieldException | IllegalAccessException | SecurityException e) {
             e.printStackTrace();
         }
         return null;

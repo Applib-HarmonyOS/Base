@@ -7,18 +7,29 @@ import io.kimo.base.utils.domain.callback.SilentCallback;
 
 import java.util.List;
 
-
+/**
+ * LoadCollectionUseCase.
+ */
 public abstract class LoadCollectionUseCase<E extends Entity> extends BaseUseCase<List<E>> {
 
+    /**
+     * LoadCollectionUseCase.
+     */
     public LoadCollectionUseCase() {
         super(new SilentCallback() {
             @Override
-            public void onSuccess(Object result) {}
+            public void onSuccess(Object result) {
+            }
+
             @Override
-            public void onError(String error) {}
+            public void onError(String error) {
+            }
         });
     }
 
+    /**
+     * setCallback.
+     */
     public void setCallback(Callback<List<E>> callback) {
         this.mCallback = callback;
     }

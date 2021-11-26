@@ -1,12 +1,14 @@
 package io.kimo.base;
 
-
+/**
+ * Base inteface harmony
+ */
 public interface Base {
 
     /**
      * Main contract between the harmony classes
      */
-    interface HarmonyComponent<P extends Presenter>{
+    interface HarmonyComponent<P extends Presenter> {
         /* return your component's layout resource */
         int getLayoutResource();
 
@@ -25,8 +27,19 @@ public interface Base {
         P getPresenter();
     }
 
+    /**
+     * Presenter interface
+     */
     interface Presenter {
+
+        /**
+         * createComponent
+         */
         void createComponent();
+
+        /**
+         * destroyComponent
+         */
         void destroyComponent();
     }
 }
