@@ -23,7 +23,6 @@ import ohos.aafwk.content.Intent;
 import ohos.agp.components.Component;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 
 /**
  * BaseAbility
@@ -68,12 +67,12 @@ public abstract class BaseAbility<P extends Base.Presenter>
     public static Component getCurComponentContainer(AbilitySlice abilitySlice) {
         try {
             Field uiContent = AbilitySlice.class.getDeclaredField(Constant.Ui_Content);
-            uiContent.setAccessible(true);
+                uiContent.setAccessible(true);
             Object uiContentObj = uiContent.get(abilitySlice);
 
             Field curComponentContainer = uiContentObj.getClass().getSuperclass().
                     getDeclaredField(Constant.Cur_ComponentContainer);
-            curComponentContainer.setAccessible(true);
+                curComponentContainer.setAccessible(true);
             Object curComponentContainerObj = curComponentContainer.get(uiContentObj);
 
             return (Component) curComponentContainerObj;
