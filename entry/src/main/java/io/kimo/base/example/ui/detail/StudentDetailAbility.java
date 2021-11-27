@@ -13,7 +13,7 @@ import ohos.agp.components.Text;
 /**
  * StudentDetailAbility
  */
-public class StudentDetailAbility extends BaseAbility<StudentDetailPresenter> implements StudentDetailContract.Component {
+public class StudentDetailAbility extends BaseAbility<StudentDetailPresenters> implements StudentDetailContract.Component {
 
     public static final String TAG = StudentDetailAbility.class.getSimpleName();
     public static final String STUDENT = TAG + ".STUDENT";
@@ -61,13 +61,15 @@ public class StudentDetailAbility extends BaseAbility<StudentDetailPresenter> im
     }
 
     @Override
-    public void configureUI() {}
+    public void configureUI() {
+        // Do nothing because no configure details
+    }
 
     @Override
-    public StudentDetailPresenter injectDependencies() {
+    public StudentDetailPresenters injectDependencies() {
         Student student = mIntent.getSerializableParam(STUDENT);
 
-        return new StudentDetailPresenter(this, student);
+        return new StudentDetailPresenters(this, student);
     }
 
     @Override

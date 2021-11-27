@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * StudentListAbility
  */
-public class StudentListAbility extends BaseAbility<StudentListPresenter> implements StudentListContract.Component {
+public class StudentListAbility extends BaseAbility<StudentListPresenters> implements StudentListContract.Component {
 
     private ListContainer mList;
     private ProgressBar mProgress;
@@ -54,8 +54,8 @@ public class StudentListAbility extends BaseAbility<StudentListPresenter> implem
     }
 
     @Override
-    public StudentListPresenter injectDependencies() {
-        return new StudentListPresenter(this, this);
+    public StudentListPresenters injectDependencies() {
+        return new StudentListPresenters(this, this);
     }
 
     /**
@@ -68,7 +68,7 @@ public class StudentListAbility extends BaseAbility<StudentListPresenter> implem
 
         public StudentListAdapter(Context context) {
             mLayoutInflater = LayoutScatter.getInstance(context);
-            mData = StudentListPresenter.createData();
+            mData = StudentListPresenters.createData();
         }
 
         public void setData(List<Student> newData) {

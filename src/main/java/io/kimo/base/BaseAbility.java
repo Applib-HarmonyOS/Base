@@ -68,12 +68,16 @@ public abstract class BaseAbility<P extends Base.Presenter>
     public static Component getCurComponentContainer(AbilitySlice abilitySlice) {
         try {
             Field uiContent = AbilitySlice.class.getDeclaredField(Constant.Ui_Content);
-            uiContent.setAccessible(true);
+            if (!Modifier.isPublic(uiContent.getModifiers())) {
+                uiContent.setAccessible(true);
+            }
             Object uiContentObj = uiContent.get(abilitySlice);
 
             Field curComponentContainer = uiContentObj.getClass().getSuperclass().
                     getDeclaredField(Constant.Cur_ComponentContainer);
-            curComponentContainer.setAccessible(true);
+            if (!Modifier.isPublic(curComponentContainer.getModifiers())) {
+                curComponentContainer.setAccessible(true);
+            }
             Object curComponentContainerObj = curComponentContainer.get(uiContentObj);
 
             return (Component) curComponentContainerObj;

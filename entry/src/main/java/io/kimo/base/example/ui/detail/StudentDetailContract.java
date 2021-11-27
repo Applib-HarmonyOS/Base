@@ -10,7 +10,7 @@ public interface StudentDetailContract {
     /**
      * Component
      */
-    interface Component extends Base.Component<StudentDetailPresenter> {
+    interface Component extends Base.Component<StudentDetailPresenters> {
         void updateImage(String someUrl);
 
         void updateName(String someName);

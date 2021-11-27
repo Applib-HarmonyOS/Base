@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface StudentListContract {
 
-    interface Component extends Base.Component<StudentListPresenter> {
+    interface Component extends Base.Component<StudentListPresenters> {
         void showLoading();
         void showList(List<Student> models);
     }
