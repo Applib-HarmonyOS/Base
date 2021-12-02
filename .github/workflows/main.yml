@@ -9,7 +9,7 @@ jobs:
     runs-on: windows-latest
     name: Build and Analyse
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Set up JDK 11
@@ -21,9 +21,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        uses: applibgroup/HarmonyOsSdk@v1.2
+        uses: applibgroup/HarmonyOsSdk@v1.3
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with: 
           name: assets-for-download
           path: build\outputs\hap\debug\phone
