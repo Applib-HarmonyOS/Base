@@ -1,0 +1,23 @@
+{
+  "app": {
+    "bundleName": "io.kimo.base.example",
+    "vendor": "kimo",
+    "version": {
+      "code": 1000000,
+      "name": "1.0.0"
+    }
+  },
+  "deviceConfig": {
+  },
+  "module": {
+    "package": "io.kimo.base",
+    "deviceType": [
+      "tablet"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "base",
+      "moduleType": "har"
+    }
+  }
+}

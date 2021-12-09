@@ -1,14 +1,31 @@
 package io.kimo.base.utils.domain;
 
-import android.os.Handler;
-import android.os.Looper;
+import io.kimo.base.utils.Constant;
+import ohos.eventhandler.EventHandler;
+import ohos.eventhandler.EventRunner;
 
+/**
+ * BaseUseCase.
+ */
 public abstract class BaseUseCase<T> implements UseCase<T>, Runnable {
 
     public Callback<T> mCallback;
-    protected String mErrorReason = "Something wrong happened";
-    protected Handler mMainThread = new Handler(Looper.getMainLooper());
 
+    /**
+     * mErrorReason string
+     */
+    protected String mErrorReason = Constant.Something_Wrong;
+
+    /**
+     * mMainThread EventHandler
+     */
+    protected EventHandler mMainThread = new EventHandler(EventRunner.getMainEventRunner());
+
+    /**
+     * BaseUseCase constructor
+     *
+     * @param mCallback Callback
+     */
     public BaseUseCase(Callback<T> mCallback) {
         this.mCallback = mCallback;
     }
@@ -17,12 +34,7 @@ public abstract class BaseUseCase<T> implements UseCase<T>, Runnable {
     public void run() {
         try {
             final T result = perform();
-            mMainThread.post(new Runnable() {
-                @Override
-                public void run() {
-                    mCallback.onSuccess(result);
-                }
-            });
+            mMainThread.postTask(() -> mCallback.onSuccess(result));
         } catch (Exception e) {
             mErrorReason = e.getMessage();
             onError();
@@ -31,11 +43,6 @@ public abstract class BaseUseCase<T> implements UseCase<T>, Runnable {
 
     @Override
     public void onError() {
-        mMainThread.post(new Runnable() {
-            @Override
-            public void run() {
-                mCallback.onError(mErrorReason);
-            }
-        });
+        mMainThread.postTask(() -> mCallback.onError(mErrorReason));
     }
 }

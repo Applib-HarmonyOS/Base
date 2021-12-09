@@ -1,37 +1,62 @@
 package io.kimo.base.utils.mvp.presenter;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Executor;
-
 import io.kimo.base.utils.domain.BaseMapper;
 import io.kimo.base.utils.domain.Callback;
 import io.kimo.base.utils.domain.Entity;
 import io.kimo.base.utils.domain.usecase.LoadCollectionUseCase;
 import io.kimo.base.utils.mvp.BasePresenter;
 import io.kimo.base.utils.mvp.Model;
-import io.kimo.base.utils.mvp.view.LoadDataCollectionView;
+import io.kimo.base.utils.mvp.component.LoadDataCollectionComponent;
 
-public class LoadDataCollectionPresenter<E extends Entity, M extends Model> extends BasePresenter<LoadDataCollectionView<M>> {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Executor;
 
+/**
+ * LoadDataCollectionPresenter
+ *
+ * @param <E>
+ * @param <M>
+ */
+public class LoadDataCollectionPresenter<E extends Entity, M extends Model> extends BasePresenter<LoadDataCollectionComponent<M>> {
+    /**
+     * mExecutor
+     */
     protected Executor mExecutor;
+    /**
+     * mUseCase
+     */
     protected LoadCollectionUseCase<E> mUseCase;
-    protected BaseMapper<E,M> mMapper;
+    /**
+     * mMapper
+     */
+    protected BaseMapper<E, M> mMapper;
+    /**
+     * mLoadedCollection
+     */
     protected List<E> mLoadedCollection = new ArrayList<>();
 
-    public LoadDataCollectionPresenter(LoadDataCollectionView<M> view, BaseMapper<E, M> mapper, LoadCollectionUseCase<E> useCase, Executor executor) {
-        super(view);
+    /**
+     * LoadDataCollectionPresenter
+     *
+     * @param component LoadDataCollectionComponent
+     * @param mapper    BaseMapper
+     * @param useCase   LoadCollectionUseCase
+     * @param executor  Executor
+     */
+    public LoadDataCollectionPresenter(LoadDataCollectionComponent<M> component, BaseMapper<E, M> mapper, LoadCollectionUseCase<E> useCase, Executor executor) {
+        super(component);
         this.mMapper = mapper;
         this.mUseCase = useCase;
         this.mExecutor = executor;
     }
 
     @Override
-    public void createView() {
-        super.createView();
+    public void createComponent() {
+        super.createComponent();
 
-        mView.showProgress();
+        mComponent.showProgress();
 
         mUseCase.setCallback(new Callback<List<E>>() {
             @Override
@@ -40,20 +65,20 @@ public class LoadDataCollectionPresenter<E extends Entity, M extends Model> exte
                 mLoadedCollection = result;
 
                 if (result.isEmpty()) {
-                    mView.hideProgress();
-                    mView.showEmpty();
+                    mComponent.hideProgress();
+                    mComponent.showEmpty();
                 } else {
-                    mView.hideProgress();
-                    mView.renderCollection(mMapper.toModels(result));
-                    mView.showView();
+                    mComponent.hideProgress();
+                    mComponent.renderCollection(mMapper.toModels(result));
+                    mComponent.showComponent();
                 }
             }
 
             @Override
             public void onError(String error) {
-                mView.hideProgress();
-                mView.showRetry(error);
-                mView.showFeedback("Try again");
+                mComponent.hideProgress();
+                mComponent.showRetry(error);
+                mComponent.showFeedback("Try again");
             }
         });
 
@@ -61,15 +86,15 @@ public class LoadDataCollectionPresenter<E extends Entity, M extends Model> exte
     }
 
     @Override
-    protected void hideAllViews() {
-        mView.hideView();
-        mView.hideProgress();
-        mView.hideEmpty();
-        mView.hideRetry();
+    protected void hideAllComponents() {
+        mComponent.hideComponent();
+        mComponent.hideProgress();
+        mComponent.hideEmpty();
+        mComponent.hideRetry();
     }
 
     @Override
-    public void destroyView() {
-        mView.clearCollection();
+    public void destroyComponent() {
+        mComponent.clearCollection();
     }
 }

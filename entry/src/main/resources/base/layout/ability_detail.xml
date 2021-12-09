@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:orientation="vertical">
+
+    <Image
+        ohos:id="$+id:image"
+        ohos:background_element="#A9A9A9"
+        ohos:width="match_parent"
+        ohos:height="200vp"
+        ohos:bottom_margin="32vp"/>
+
+    <Text
+        ohos:left_padding="16vp"
+        ohos:right_padding="16vp"
+        ohos:top_margin="8vp"
+        ohos:bottom_margin="8vp"
+        ohos:min_height="56vp"
+        ohos:text_size="20fp"
+        ohos:id="$+id:title"
+        ohos:text="Thiago Rocha"
+        ohos:height="match_content"
+        ohos:width="match_parent" />
+
+    <Text
+        ohos:left_padding="16vp"
+        ohos:right_padding="16vp"
+        ohos:top_margin="8vp"
+        ohos:bottom_margin="8vp"
+        ohos:min_height="56vp"
+        ohos:text_size="20fp"
+        ohos:id="$+id:subtitle"
+        ohos:text="Harmony Developer"
+        ohos:height="match_content"
+        ohos:width="match_parent" />
+
+    <Text
+        ohos:left_padding="16vp"
+        ohos:right_padding="16vp"
+        ohos:top_margin="8vp"
+        ohos:bottom_margin="8vp"
+        ohos:min_height="56vp"
+        ohos:text_size="20fp"
+        ohos:id="$+id:description"
+        ohos:text="lorem ipsum dolor"
+        ohos:height="match_content"
+        ohos:width="match_parent" />
+
+
+</DirectionalLayout>
